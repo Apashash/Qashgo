@@ -1,0 +1,116 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 200 20% 7%; /* Darker Sky Blue */
+  --foreground: 210 40% 98%; /* Light Grayish Blue */
+  --card: 200 20% 10%; /* Slightly lighter Dark Sky Blue for cards */
+  --card-foreground: 210 40% 98%;
+  --popover: 200 20% 7%;
+  --popover-foreground: 210 40% 98%;
+  
+  --primary: 205 90% 50%; /* Vivid Sky Blue */
+  --primary-foreground: 210 40% 98%;
+  
+  --secondary: 145 63% 42%; /* Green */
+  --secondary-foreground: 210 40% 98%;
+  
+  --destructive: 0 60% 50%; /* Red */
+  --destructive-foreground: 0 0% 100%;
+  
+  --muted: 200 20% 15%;
+  --muted-foreground: 200 15% 65%;
+  
+  --accent: 205 90% 55%; /* Brighter Sky Blue for accents */
+  --accent-foreground: 210 40% 98%;
+  
+  --border: 200 20% 20%; /* Sky Blue tinted border */
+  --input: 200 20% 18%; /* Sky Blue tinted input */
+  --ring: 205 90% 50%; /* Ring color to match primary */
+  
+  --radius: 0.5rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(200, 25%, 10%) 50%, hsl(200, 30%, 15%) 100%);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  min-height: 100vh;
+}
+
+.text-transparent.bg-clip-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text { /* Legacy - will be overridden by specific Tailwind gradients */
+  background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--primary)), hsl(var(--destructive)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: hsla(var(--card) / 0.8); /* More opaque for better readability */
+  backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid hsla(var(--border) / 0.3);
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); } /* Reduced float height */
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.card-hover-sky {
+  transition: all 0.3s ease;
+}
+.card-hover-sky:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 15px 30px hsla(var(--primary) / 0.25); /* Primary color shadow */
+}
+
+
+.pattern-bg {
+  background-image: 
+    radial-gradient(circle at 15% 20%, hsla(var(--primary) / 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, hsla(var(--secondary) / 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, hsla(var(--destructive) / 0.05) 0%, transparent 30%);
+  background-size: 150% 150%; /* Make patterns larger and less dense */
+}
+
+.mobile-menu-overlay {
+  background: hsla(var(--background) / 0.8);
+  backdrop-filter: blur(8px);
+}
+
+/* Custom scrollbar for better theme integration */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.6);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
